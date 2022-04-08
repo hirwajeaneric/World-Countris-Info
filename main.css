@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(248, 248, 248);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 90%;
+}
+
+
+/*NAVIGATION*/
+
+
+/*BANNER*/
+.banner {
+    background-image: url("/img/pexels-pixabay-41949.jpg");
+    background-repeat: no-repeat;
+    z-index: 999;
+}
+
+.banner .banner-overflow {
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.banner,
+.banner .banner-overflow {
+    background-size: cover;
+    width: 100%;
+    
+}
+
+.banner .banner-overflow h1 {
+    font-size: 400%;
+    color: white;
+    font-weight: 900;
+    margin: 100px 0 50px;
+    text-align: center;
+    padding: 30px;
+}
+
+.banner .banner-overflow form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 50px;
+}
+
+.banner .banner-overflow form .select-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.banner .banner-overflow form .search-div input,
+.banner .banner-overflow form .select-div select {
+    padding: 10px 15px;
+    border-radius: 7px;
+    border: none;
+}
+
+.banner .banner-overflow form .search-div button {
+    font-weight: 600;
+    font-size: 110%;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+}
+
+.banner .banner-overflow form .search-div button:hover {
+    background-color: black;
+    color: white;
+    padding: 8px 18px;
+    border: 2px solid white;
+}
+
+/*COUNTRIES*/
+.country-container {
+    margin-top: 10px;
+    padding-top: 40px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1500px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.a-country {
+    background-color: white;
+    width: 250px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+}
+
+.a-country .country-details {
+    padding: 20px;
+}
+
+.flag-div, img {
+    width: 250px;
+    height: 150px;
+}
+
+.a-country .main-details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.a-country .main-details h2 {
+    padding-right: 30px;
+}
+
+.a-country .other-details {
+    margin-top: 10px;
+}
+
+.a-country .other-details table tr th {
+    text-align: left;
+}
+
+.a-country .other-details table td {
+    vertical-align: top;
+    padding: 0 0 6px;
+}
