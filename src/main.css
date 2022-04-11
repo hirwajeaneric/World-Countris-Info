@@ -134,6 +134,14 @@ body {
     border-radius: 10px;
 }
 
+.hide{
+    display: none;
+}
+
+.block {
+    display: block;
+}
+
 .a-country {
     background-color: white;
     width: 280px;
@@ -179,4 +187,22 @@ body {
 .a-country .other-details table td {
     vertical-align: top;
     padding: 0 0 6px;
+}
+
+
+/*Messages*/
+.messageBox {
+    margin: 0 auto;
+    width: 50%;
+    padding: 30px;
+    margin: 10px 0 20px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.messageParagraph{
+    text-align: center;
+    color: rgb(43, 40, 40);
+    font-size: 120%;
+    font-weight: 700;
+
 }

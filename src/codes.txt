@@ -1,0 +1,25 @@
+// searchBox.addEventListener("input", (countriesArray)=>{
+//     searchedCountryName = searchBox.value;
+//     console.log(`We are searching for: ${searchedCountryName}`);
+//     searchCountries(searchedCountryName);
+// });
+
+
+// const searchCountries = (name) => {
+//     axios
+//     .get(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
+//     .then((response)=>{
+//         let searchedCountries = response.data;
+//         countryContainer.removeChild();
+//         createCountry(searchedCountries);
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     })
+//     .finally(() => {
+//         console.log("Fetch successful!");
+//     });
+// }
+
+//document.addEventListener("DOMContentLoaded", displayCountries(100, 200));
+//document.addEventListener("DOMContentLoaded", displayCountries(200, 250));
