@@ -31,9 +31,9 @@ const displayCountries = (start, end) => {
     });
 };
 
-//document.addEventListener("DOMContentLoaded", displayCountries(1,100));
-//document.addEventListener("DOMContentLoaded", displayCountries(100, 200));
-document.addEventListener("DOMContentLoaded", displayCountries(200, 250));
+//document.addEventListener("DOMContentLoaded", displayCountries(0,100));
+document.addEventListener("DOMContentLoaded", displayCountries(100, 200));
+//document.addEventListener("DOMContentLoaded", displayCountries(200, 250));
 
 
 const createCountry = (countriesObject)=>{
@@ -42,14 +42,23 @@ const createCountry = (countriesObject)=>{
         name = countriesObject[i].name.common;
         capital = countriesObject[i].capital;
         continents = countriesObject[i].continents[0];
-        languageObject = countriesObject[i].languages;
         population = countriesObject[i].population;
-        language = languageObject[Object.keys(languageObject)[0]];
+        languageObject = countriesObject[i].languages;
+        for(l in languageObject){
+            language = languageObject[l];
+            break;
+        }
         currenciesObject = countriesObject[i].currencies;
-        currencyName = currenciesObject[Object.keys(currenciesObject)[0]].name;
-        currencySymbol = currenciesObject[Object.keys(currenciesObject)[0]].symbol;
+        for(cur in currenciesObject){
+            currency = currenciesObject[cur];
+            let {name, symbol} = currency;
+            currencyName = name;
+            currencySymbol = symbol;
+            break;
+        }
         region = countriesObject[i].region;
 
+        console.log(`*** ${i+1} ***`);
         console.log(flag);
         console.log(name);
         console.log(capital);
@@ -137,7 +146,7 @@ const createCountry = (countriesObject)=>{
         let currencySymbolTableData = document.createElement("td");
         currencySymbolTableData.innerHTML = currencySymbol;
         currencySymbolTableRow.appendChild(currencySymbolTableHeader);
-        currencySymbolTableRow.appendChild(currencyNameTableData);
+        currencySymbolTableRow.appendChild(currencySymbolTableData);
 
         let mainLanguageTableRow = document.createElement("tr");
         let mainLanguageTableHeader = document.createElement("th");
