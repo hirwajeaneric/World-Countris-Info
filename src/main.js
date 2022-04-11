@@ -66,6 +66,7 @@ const createCountry = (countriesObject)=>{
 
         let flagDiv = document.createElement("div");
         flagDiv.classList.add("flag-div");
+        
         let flagImage = document.createElement("img");
         flagImage.setAttribute("src", flag);
         flagImage.setAttribute("alt", `The flag of ${name}`);
@@ -79,11 +80,16 @@ const createCountry = (countriesObject)=>{
         
         let countryNameHeader = document.createElement("h2");
         countryNameHeader.innerHTML = name;
+
         let capitalDiv = document.createElement("div");
         capitalDiv.classList.add("capital");
+
         let capitalCityTitleParagraph = document.createElement("p");
+        capitalCityTitleParagraph.innerHTML = "Capital:";
+
         let capitalCityNameHeader = document.createElement("h3");
         capitalCityNameHeader.innerHTML = capital;
+        
         capitalDiv.appendChild(capitalCityTitleParagraph);
         capitalDiv.appendChild(capitalCityNameHeader);
         mainCountryDetailsDiv.appendChild(countryNameHeader);
@@ -127,7 +133,7 @@ const createCountry = (countriesObject)=>{
 
         let currencySymbolTableRow = document.createElement("tr");
         let currencySymbolTableHeader = document.createElement("th");
-        currencySymbolTableHeader.innerHTML = "Currencty Symbol:";
+        currencySymbolTableHeader.innerHTML = "Currency Symbol:";
         let currencySymbolTableData = document.createElement("td");
         currencySymbolTableData.innerHTML = currencySymbol;
         currencySymbolTableRow.appendChild(currencySymbolTableHeader);
@@ -160,41 +166,3 @@ const createCountry = (countriesObject)=>{
         countryContainer.appendChild(countryDiv);
     }
 }
-
-/* 
-<div class="a-country">
-    <div class="flag-div">
-        <img src="/img/2000px-Flag_of_Rwanda.svg.png" alt="">
-    </div>
-    <div class="country-details">
-        <div class="main-details">
-            <h2>Rwanda</h2>
-            <div class="capital">
-                <p>Capital:</p>
-                <h3>Kigali</h3>
-            </div>
-        </div>
-        <div class="other-details">
-            <table>
-                <tr>
-                    <th>Region:</th><td>East Africa</td>
-                </tr>
-                <tr>
-                    <th>Continent:</th><td>Africa</td>
-                </tr>
-                <tr>
-                    <th>Population:</th><td>12043400</td>
-                </tr>
-                <tr>
-                    <th>Currency name:</th><td>Rwanda Francs</td>
-                </tr>
-                <tr>
-                    <th>Currency symbol:</th><td>RWF</td>
-                </tr>
-                <tr>
-                    <th>Main language:</th><td>Kinyarwanda</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div> */
