@@ -31,8 +31,8 @@ const displayCountries = (start, end) => {
     });
 };
 
-document.addEventListener("DOMContentLoaded", displayCountries(0,100));
-//document.addEventListener("DOMContentLoaded", displayCountries(100, 200));
+//document.addEventListener("DOMContentLoaded", displayCountries(0,100));
+document.addEventListener("DOMContentLoaded", displayCountries(100, 200));
 //document.addEventListener("DOMContentLoaded", displayCountries(200, 250));
 
 
