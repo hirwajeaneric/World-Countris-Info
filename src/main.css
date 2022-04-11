@@ -107,7 +107,7 @@ body {
 
 .a-country {
     background-color: white;
-    width: 250px;
+    width: 280px;
     margin: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
@@ -119,7 +119,7 @@ body {
 }
 
 .flag-div, img {
-    width: 250px;
+    width: 280px;
     height: 150px;
 }
 
@@ -132,6 +132,11 @@ body {
 
 .a-country .main-details h2 {
     padding-right: 30px;
+    width: 60%;
+}
+
+.a-country .main-details .capital {
+    width: 40%;
 }
 
 .a-country .other-details {
