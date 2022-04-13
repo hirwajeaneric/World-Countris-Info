@@ -5,24 +5,33 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>World - Countries</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet"/>
     <link rel='stylesheet' type='text/css' media='screen' href='./src/main.css'>
-</head>
+</head> 
 <body>
     <div class="banner">
         <div class="banner-overflow">
             <h1>WORLD COUNTRIES</h1>
             <form action="" method="get">
                 <div class="search-div">
-                    <input type="text" name="search" id="search" placeholder="Search for a country">
-                    <button type="button">Search</button>
+                    <input type="text" name="search" id="search" class="search" placeholder="Search for a country">
+                    <!-- <button type="button">Search</button> -->
                 </div>
-                <div class="select-div">
-                    <select id="filter" name="filter">
-                        <option value="filterbyregion">Filter by region</option>
-                        <option value="filterbycontinent">Filter by continent</option>
-                        <option value="filterbylanguage">Filter by main language</option>
-                        <option value="filterbyname">Filter by main name</option>
-                    </select>
+                <div class="dropDownContainer">
+                    <div class="dropDown">
+                        <p>Filter by region</p>
+                        <button>
+                            <span class="material-icons-sharp i">arrow_drop_down</span>
+                        </button>
+                    </div>
+                    <div class="drop showDrop">
+                        <p class="region">All</p>
+                        <p class="region">Africa</p>
+                        <p class="region">Europe</p>
+                        <p class="region">Asia</p>
+                        <p class="region">Oceania</p>
+                        <p class="region">America</p>
+                    </div>
                 </div>
             </form>
         </div>

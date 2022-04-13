@@ -54,17 +54,10 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 80%;
     margin-bottom: 50px;
-}
-
-.banner .banner-overflow form .select-div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: 20px;
 }
 
 .banner .banner-overflow form .search-div input,
@@ -89,6 +82,57 @@ body {
     padding: 8px 18px;
     border: 2px solid white;
 }
+
+/*Dropdown filter*/
+.dropDownContainer {
+    width: 200px;
+    position: relative;
+}
+.dropDown {
+    width: 100%;
+    padding: 2px 2px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    background: white;
+    border-radius: 5px;
+}
+
+.dropDown p {
+    letter-spacing: 0.5px;
+    padding: 0px 13px;
+    font-size: 90%;
+    color: gray;
+}
+.i {
+    cursor: pointer;
+}
+.drop {
+    position: absolute;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 0px;
+    width: 100%;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.drop p {
+    padding: 6px 20px;
+}
+
+.drop p:hover {
+    background-color: rgb(206, 206, 206);
+}
+
+.showDrop {
+    display: none;
+    background: white;
+}
+
 
 /*PAGINATION*/
 .center {

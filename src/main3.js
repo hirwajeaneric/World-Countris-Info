@@ -13,15 +13,24 @@ let currenciesObject = {};
 let currencyName = "";
 let currencySymbol = "";
 let region = "";
-const countryContainer = document.getElementById('country-container');
+let countryDiv = "";
 
+const countryContainer = document.getElementById('country-container');
+const searchButton = document.querySelector('button');
+let searchBox = document.querySelector('.search');
+let searchedCountryName="";
+
+/**
+ * Fetching from the API 
+ * 
+ * */
 const displayCountries = (start, end) => {
     axios
     .get(API_ENDPOINT)
     .then((response) => {
       let countries = response.data;
-      let countriesObject= countries.slice(start,end);
-      createCountry(countriesObject);
+      let countriesArray= countries.slice(start,end);
+      createCountry(countriesArray);
     })
     .catch((error) => {
       console.log(error);
@@ -31,22 +40,24 @@ const displayCountries = (start, end) => {
     });
 };
 
-document.addEventListener("DOMContentLoaded", displayCountries(200, 250));
 
-
-const createCountry = (countriesObject)=>{
-    for (let i = 0; i < countriesObject.length; i++) {
-        flag = countriesObject[i].flags.png;
-        name = countriesObject[i].name.common;
-        capital = countriesObject[i].capital;
-        continents = countriesObject[i].continents[0];
-        population = countriesObject[i].population;
-        languageObject = countriesObject[i].languages;
+/**
+ * Function to create and display countries. 
+ * 
+ * */
+const createCountry = (countriesArray)=>{
+    for (let i = 0; i < countriesArray.length; i++) {
+        flag = countriesArray[i].flags.png;
+        name = countriesArray[i].name.common;
+        capital = countriesArray[i].capital;
+        continents = countriesArray[i].continents[0];
+        population = countriesArray[i].population;
+        languageObject = countriesArray[i].languages;
         for(l in languageObject){
             language = languageObject[l];
             break;
         }
-        currenciesObject = countriesObject[i].currencies;
+        currenciesObject = countriesArray[i].currencies;
         for(cur in currenciesObject){
             currency = currenciesObject[cur];
             let {name, symbol} = currency;
@@ -54,21 +65,9 @@ const createCountry = (countriesObject)=>{
             currencySymbol = symbol;
             break;
         }
-        region = countriesObject[i].region;
-
-        console.log(`*** ${i+1} ***`);
-        console.log(flag);
-        console.log(name);
-        console.log(capital);
-        console.log(continents);
-        console.log(population);
-        console.log(language);
-        console.log(currencyName);
-        console.log(currencySymbol);
-        console.log(region);
-        console.log("-----------------------");
+        region = countriesArray[i].region;
   
-        let countryDiv = document.createElement("div");
+        countryDiv = document.createElement("div");
         countryDiv.classList.add("a-country");
 
         let flagDiv = document.createElement("div");
@@ -86,7 +85,8 @@ const createCountry = (countriesObject)=>{
         mainCountryDetailsDiv.classList.add("main-details");
         
         let countryNameHeader = document.createElement("h2");
-        countryNameHeader.innerHTML = name;
+        countryNameHeader.classList.add("countryName");
+        countryNameHeader.innerHTML = ""+name;
 
         let capitalDiv = document.createElement("div");
         capitalDiv.classList.add("capital");
@@ -118,6 +118,7 @@ const createCountry = (countriesObject)=>{
         let continentTableHeader = document.createElement("th");
         continentTableHeader.innerHTML = "Continent:";
         let continentTableData = document.createElement("td");
+        continentTableData.classList.add("continent");
         continentTableData.innerHTML = continents;
         continentTableRow.appendChild(continentTableHeader);
         continentTableRow.appendChild(continentTableData);
@@ -173,3 +174,52 @@ const createCountry = (countriesObject)=>{
         countryContainer.appendChild(countryDiv);
     }
 }
+
+document.addEventListener("DOMContentLoaded", displayCountries(200,250));
+
+/**
+ * 
+ * Function to filter
+ * */
+
+const regionNameFromCountryDivs = document.getElementsByClassName("continent");
+console.log(regionNameFromCountryDivs);
+
+const chosenRegions = document.querySelectorAll(".region");
+console.log(chosenRegions);
+chosenRegions.forEach((chosenRegions)=>{
+    console.log(chosenRegions.innerHTML);
+})
+//We then add events to listen whenever a click is done on a specific region.
+chosenRegions.forEach((chosenRegions)=>{
+    chosenRegions.addEventListener("click",()=>{
+        console.log(`You choose ${chosenRegions.innerHTML} - ${chosenRegions.innerText}`);
+        //We loop throug all the region from the countries. And Implement
+        Array.from(regionNameFromCountryDivs).forEach((el)=>{
+            if (el.innerHTML.includes(chosenRegions.innerHTML) || chosenRegions.innerText=="All") {
+                el.parentElement.parentElement.parentElement.style.display="block";
+            } else {
+                el.parentElement.parentElement.parentElement.style.display="none";
+            }
+        });
+    });
+});
+
+
+/**
+ * 
+ * Function to search
+ */
+//Let's first hold countries on the dom
+const countryName = document.getElementsByClassName("countryName");
+console.log(countryName);
+//The values returned by 'countryName' is actually an array of country name elements
+searchBox.addEventListener("input",()=>{
+    Array.from(countryName).forEach((elem)=>{
+        if (elem.innerHTML.toLowerCase().includes(searchBox.value.toLowerCase())) {
+            elem.parentElement.parentElement.parentElement.style.display="block";
+        } else {
+            elem.parentElement.parentElement.parentElement.style.display="none";
+        }
+    });
+});

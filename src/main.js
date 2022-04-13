@@ -17,9 +17,13 @@ let countryDiv = "";
 
 const countryContainer = document.getElementById('country-container');
 const searchButton = document.querySelector('button');
-let searchBox = document.getElementById('search');
+let searchBox = document.querySelector('.search');
 let searchedCountryName="";
 
+/**
+ * Fetching from the API 
+ * 
+ * */
 const displayCountries = (start, end) => {
     axios
     .get(API_ENDPOINT)
@@ -36,14 +40,11 @@ const displayCountries = (start, end) => {
     });
 };
 
-const searchCountry = (countriesArray)=>{
-    searchedCountryName = searchBox.value;
-    console.log(searchedCountryName); 
 
-    countryContainer.classList.add("hide");
-    console.log("Countries hidden!");
-}
-
+/**
+ * Function to create and display countries. 
+ * 
+ * */
 const createCountry = (countriesArray)=>{
     for (let i = 0; i < countriesArray.length; i++) {
         flag = countriesArray[i].flags.png;
@@ -84,7 +85,8 @@ const createCountry = (countriesArray)=>{
         mainCountryDetailsDiv.classList.add("main-details");
         
         let countryNameHeader = document.createElement("h2");
-        countryNameHeader.innerHTML = name;
+        countryNameHeader.classList.add("countryName");
+        countryNameHeader.innerHTML = ""+name;
 
         let capitalDiv = document.createElement("div");
         capitalDiv.classList.add("capital");
@@ -108,6 +110,7 @@ const createCountry = (countriesArray)=>{
         let regionTableHeader = document.createElement("th");
         regionTableHeader.innerHTML = "Region:";
         let regionTableData = document.createElement("td");
+        regionTableData.classList.add("a-region");
         regionTableData.innerHTML = region;
         regionTableRow.appendChild(regionTableHeader);
         regionTableRow.appendChild(regionTableData);
@@ -173,4 +176,51 @@ const createCountry = (countriesArray)=>{
 }
 
 document.addEventListener("DOMContentLoaded", displayCountries(0,100));
-searchButton.addEventListener("click", searchCountry);
+
+/**
+ * 
+ * Function to filter
+ * */
+//Dropdown click event to see the list of regions
+const dropDown = document.querySelector(".dropDown");
+const drop = document.querySelector(".drop");
+
+dropDown.addEventListener("click",()=>{
+    drop.classList.toggle("showDrop");
+});
+
+const regionNameFromCountryDivs = document.getElementsByClassName("a-region");
+const chosenRegions = document.querySelectorAll(".region");
+
+//We then add events to listen whenever a click is done on a specific region.
+chosenRegions.forEach((chosenRegions)=>{
+    chosenRegions.addEventListener("click",()=>{
+        //We loop throug all the region from the countries. And Implement
+        Array.from(regionNameFromCountryDivs).forEach((el)=>{
+            if (el.innerHTML.includes(chosenRegions.innerText) || chosenRegions.innerText=="All") {
+                el.parentElement.parentElement.parentElement.style.display="block";
+            } else {
+                el.parentElement.parentElement.parentElement.parentElement.parentElement.style.display="none";
+            }
+        });
+    });
+});
+
+
+/**
+ * 
+ * Function to search
+ */
+//Let's first hold countries on the dom
+const countryName = document.getElementsByClassName("countryName");
+console.log(countryName);
+//The values returned by 'countryName' is actually an array of country name elements
+searchBox.addEventListener("input",()=>{
+    Array.from(countryName).forEach((elem)=>{
+        if (elem.innerHTML.toLowerCase().includes(searchBox.value.toLowerCase())) {
+            elem.parentElement.parentElement.parentElement.style.display="block";
+        } else {
+            elem.parentElement.parentElement.parentElement.style.display="none";
+        }
+    });
+});

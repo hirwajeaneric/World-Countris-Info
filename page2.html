@@ -6,22 +6,24 @@
     <title>World - Countries</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./src/main.css'>
-</head>
+</head> 
 <body>
     <div class="banner">
         <div class="banner-overflow">
             <h1>WORLD COUNTRIES</h1>
             <form action="" method="get">
                 <div class="search-div">
-                    <input type="text" name="search" id="search" placeholder="Search for a country">
-                    <button type="button">Search</button>
+                    <input type="text" name="search" id="search" class="search" placeholder="Search for a country">
+                    <!-- <button type="button">Search</button> -->
                 </div>
                 <div class="select-div">
-                    <select id="filter" name="filter">
-                        <option value="filterbyregion">Filter by region</option>
-                        <option value="filterbycontinent">Filter by continent</option>
-                        <option value="filterbylanguage">Filter by main language</option>
-                        <option value="filterbyname">Filter by main name</option>
+                    <select id="filter" name="filter" value="Filter">
+                        <option class="region" value="All">All</option>
+                        <option class="region" value="Africa">Africa</option>
+                        <option class="region" value="America">America</option>
+                        <option class="region" value="Asia">Asia</option>
+                        <option class="region" value="Europe">Europe</option>
+                        <option class="region" value="Oceania">Oceania</option>
                     </select>
                 </div>
             </form>
@@ -30,27 +32,68 @@
 
     <div class="center">
         <div class="pagination">
-            <a href="/index.html">&laquo;</a>
-            <a href="/index.html">1</a>
-            <a href="/page2.html" class="active">2</a>
-            <a href="/page3.html">3</a>
-            <a href="/page3.html">&raquo;</a>
-            </div>
-    </div>
-
-    <div id="country-container" class="country-container">
-
-    </div>
-
-    <div class="center">
-        <div class="pagination">
-            <a href="/index.html">&laquo;</a>
+            <a href="/index.html" disabled>&laquo;</a>
             <a href="/index.html">1</a>
             <a href="/page2.html" class="active">2</a>
             <a href="/page3.html">3</a>
             <a href="/page3.html">&raquo;</a>
         </div>
     </div>
+
+    <div id="country-container" class="country-container">
+        <!-- Countries go here -->
+        <!-- 
+        <div class="a-country">
+            <div class="flag-div">
+                <img src="/img/2000px-Flag_of_Rwanda.svg.png" alt="">
+            </div>
+            <div class="country-details">
+                <div class="main-details">
+                    <h2>Rwanda</h2>
+                    <div class="capital">
+                        <p>Capital:</p>
+                        <h3>Kigali</h3>
+                    </div>
+                </div>
+                <div class="other-details">
+                    <table>
+                        <tr>
+                            <th>Region:</th><td>East Africa</td>
+                        </tr>
+                        <tr>
+                            <th>Continent:</th><td>Africa</td>
+                        </tr>
+                        <tr>
+                            <th>Population:</th><td>12043400</td>
+                        </tr>
+                        <tr>
+                            <th>Currency name:</th><td>Rwanda Francs</td>
+                        </tr>
+                        <tr>
+                            <th>Currency symbol:</th><td>RWF</td>
+                        </tr>
+                        <tr>
+                            <th>Main language:</th><td>Kinyarwanda</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="center">
+        <div class="pagination">
+            <a href="/index.html" disabled>&laquo;</a>
+            <a href="/index.html">1</a>
+            <a href="/page2.html" class="active">2</a>
+            <a href="/page3.html">3</a>
+            <a href="/page3.html">&raquo;</a>
+        </div>
+    </div>
+
+    <footer>
+        
+    </footer>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src='./src/main2.js'></script>
